@@ -1,8 +1,48 @@
+//colors
+$background: #27232B;
+$textcolor: white;
+
 body, html{
     margin: 0;
     padding: 0;
 }
 body{
+    background-color: $background;
+    color: $textcolor;
     font-family: sans-serif;
     font-size: 16px;
+    overflow: hidden;
+}
+
+.time{
+    display: flex;
+    justify-content: center;
+    input{
+        background-color: transparent;
+        border: none;
+        color: inherit;
+        padding: 0;
+        font-size: inherit;
+        width: 1.2em;
+        min-width: 32px;
+        &::-webkit-inner-spin-button, &::-webkit-outer-spin-button{
+            display: none;
+        }
+    }
+    input#minutes{
+        text-align: right;
+    }
+}
+.principal-clock{
+    width: 244px;
+    height: 244px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 3.37em;
+    margin: 32px auto;
+    .time{
+        position: absolute;
+    }
 }

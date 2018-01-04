@@ -1,5 +1,6 @@
 const path = require('path')
 const htmlWebpackPlugin = require('html-webpack-plugin')
+const webpack = require('webpack')
 
 module.exports = {
     entry: './src/index.js',
@@ -8,7 +9,12 @@ module.exports = {
         filename: 'bundle.[hash].js',
     },
     devServer: {
-        contentBase: path.resolve('dist')
+        contentBase: path.resolve('dist'),
+        host: '0.0.0.0',
+        port: 8282
+    },
+    resolve: {
+        extensions: ['.js', '.jsx']
     },
     module: {
         loaders: [
