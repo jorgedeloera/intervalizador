@@ -6,7 +6,7 @@ module.exports = {
     entry: './src/index.js',
     output: {
         path: path.resolve('docs'),
-        filename: 'bundle.[hash].js',
+        filename: 'app/bundle.[hash].js',
     },
     devServer: {
         contentBase: path.resolve('dist'),
@@ -34,8 +34,8 @@ module.exports = {
     },
     plugins: [
         new htmlWebpackPlugin({
-            template: './public/demo.html',
-            filename: 'demo.html'
+            template: './public/app.html',
+            filename: 'app/index.html'
         }),
         new htmlWebpackPlugin({
             inject: false,

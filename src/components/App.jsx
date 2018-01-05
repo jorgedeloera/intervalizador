@@ -10,9 +10,9 @@ class App extends Component {
             timerPaused: true,
             intervalTimer: undefined,
             initialTime: {
-                all: 30,
+                all: 0,
                 minutes: '00',
-                seconds: '30'
+                seconds: '00'
             },
             intervals: [
             ]
