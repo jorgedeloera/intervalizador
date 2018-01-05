@@ -24,8 +24,9 @@ class App extends Component {
             intervals: [...this.state.intervals, newInterval]
         })
     }
-    handleInputChange(evt){
-        if(evt.target.id == 'minutes'){
+    handleInputChange(evt, val){
+        console.log(val)
+        if(val.type == 'minutes'){
             this.setState({
                 initialTime: {
                     all: (parseInt(evt.target.value) * 60) + parseInt(this.state.initialTime.seconds),
@@ -34,7 +35,7 @@ class App extends Component {
                 }
             })
         }
-        if(evt.target.id == 'seconds'){
+        if(val.type == 'seconds'){
             this.setState({
                 initialTime: {
                     all: (parseInt(this.state.initialTime.minutes) * 60) + parseInt(evt.target.value),

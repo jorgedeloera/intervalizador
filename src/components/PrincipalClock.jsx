@@ -1,5 +1,6 @@
 import React from 'react'
 import {Circle} from 'react-progressbar.js'
+import InputTime from './InputTime'
 
 const circleDefinition = {
     size: { width: '100%', height: '100%' },
@@ -21,13 +22,13 @@ const PrincipalClock = function(props){
             />
             <div className="time">
                 <div>
-                    <input id="minutes" type="number" value={props.initialTime.minutes} min={0} max={59} onChange={props.handleInputChange}/>
+                    <InputTime id="minutes" value={props.initialTime.minutes} onChange={props.handleInputChange}/>
                 </div>
                 <div>
                     <span>:</span>
                 </div>
                 <div>
-                    <input id="seconds" type="number" value={props.initialTime.seconds} min={0} max={59} onChange={props.handleInputChange}/>
+                    <InputTime id="seconds" value={props.initialTime.seconds} onChange={props.handleInputChange}/>
                 </div>
             </div>
         </div>
