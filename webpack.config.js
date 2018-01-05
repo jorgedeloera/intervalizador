@@ -1,5 +1,6 @@
 const path = require('path')
 const htmlWebpackPlugin = require('html-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 const webpack = require('webpack')
 
 module.exports = {
@@ -41,6 +42,9 @@ module.exports = {
             inject: false,
             template: './public/index.html',
             filename: 'index.html'
-        })
+        }),
+        new CopyWebpackPlugin([
+            { from: './public/manifest.json', to: 'app' }
+        ])
     ]
 }

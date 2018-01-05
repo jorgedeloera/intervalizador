@@ -1,0 +1,8 @@
+{
+    "name": "Intervalizador",
+    "display": "standalone",
+    "short_name": "Intervalizador",
+    "start_url": "/intervalizador/app/",
+    "theme_color": "#27232B",
+    "background_color": "#27232B"
+}
