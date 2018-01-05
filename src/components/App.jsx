@@ -9,8 +9,8 @@ class App extends Component {
             totalPossibletime: 60 * 60,
             initialTime: {
                 all: 0,
-                minutes: '0',
-                seconds: '0'
+                minutes: '00',
+                seconds: '00'
             },
             intervals: [
                 {all: 60, minutes: "1", seconds: "0"}
@@ -29,8 +29,8 @@ class App extends Component {
         if(val.type == 'minutes'){
             this.setState({
                 initialTime: {
-                    all: (parseInt(evt.target.value) * 60) + parseInt(this.state.initialTime.seconds),
-                    minutes: evt.target.value,
+                    all: (val.value * 60) + parseInt(this.state.initialTime.seconds),
+                    minutes: (val.value < 10) ? ('0' + val.value) : (val.value + ''),
                     seconds: this.state.initialTime.seconds
                 }
             })
@@ -38,9 +38,9 @@ class App extends Component {
         if(val.type == 'seconds'){
             this.setState({
                 initialTime: {
-                    all: (parseInt(this.state.initialTime.minutes) * 60) + parseInt(evt.target.value),
+                    all: (parseInt(this.state.initialTime.minutes) * 60) + val.value,
                     minutes: this.state.initialTime.minutes,
-                    seconds: evt.target.value
+                    seconds: (val.value < 10) ? ('0' + val.value) : (val.value + '')
                 }
             })
         }
