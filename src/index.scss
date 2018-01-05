@@ -1,6 +1,8 @@
 //colors
 $background: #27232B;
 $textcolor: white;
+$button-color: #E0822F;
+$card-bg: rgba(184, 184, 184, 0.17);
 
 body, html{
     margin: 0;
@@ -13,10 +15,14 @@ body{
     font-size: 16px;
     overflow: hidden;
 }
+button{
+    cursor: pointer;
+}
 
 .time{
     display: flex;
     justify-content: center;
+    padding: 0 32px;
     input{
         background-color: transparent;
         border: none;
@@ -45,4 +51,64 @@ body{
     .time{
         position: absolute;
     }
+}
+.action-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.intervals-box{
+    padding: 0 1.5em;
+    margin-top: 48px;
+    .title{
+        border-bottom: 1px solid;
+        font-size: 20px;
+        padding-bottom: 8px;
+    }
+    .add-interval{
+        margin: 16px 0;
+        font-size: 32px;
+    }
+    .intervals{
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        font-size: 28px;
+    }
+}
+.card{
+    background-color: $card-bg;
+    border-radius: 4px;
+    padding: 8px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.button{
+    border: none;
+    border-radius: 4px;
+    color: white;
+    background-color: $button-color;
+    width: 54px;
+    height: 54px;
+    i{
+        font-size: 32px;
+    }
+    &.primary{
+        width: 158px;
+    }
+    &.secondary{
+        background-color: transparent;
+        width: 54px;
+        height: 32px;
+        i{
+            font-size: 24px;
+        }
+    }
+}
+.issue{
+    margin: 24px;
+    background-color: transparent;
+    text-align: center;
+    font-size: 24px;
 }

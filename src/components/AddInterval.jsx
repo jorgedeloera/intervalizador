@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import InputTime from './InputTime'
 
 class AddInterval extends Component {
     constructor(props){
@@ -6,8 +7,8 @@ class AddInterval extends Component {
         this.state = {
             initialTime: {
                 all: 0,
-                minutes: '0',
-                seconds: '0'
+                minutes: '00',
+                seconds: '00'
             }
         }
         this.handleInputChange = this.handleInputChange.bind(this)
@@ -16,41 +17,41 @@ class AddInterval extends Component {
     handleSendInterval(){
         this.props.onAddInterval(this.state.initialTime)
     }
-    handleInputChange(evt){
-        if(evt.target.id == 'minutes'){
+    handleInputChange(evt, obj){
+        if(obj.type == 'minutes'){
             this.setState({
                 initialTime: {
-                    all: (parseInt(evt.target.value) * 60) + parseInt(this.state.initialTime.seconds),
-                    minutes: evt.target.value,
+                    all: (obj.value * 60) + parseInt(this.state.initialTime.seconds),
+                    minutes: obj.text,
                     seconds: this.state.initialTime.seconds
                 }
             })
         }
-        if(evt.target.id == 'seconds'){
+        if(obj.type == 'seconds'){
             this.setState({
                 initialTime: {
-                    all: (parseInt(this.state.initialTime.minutes) * 60) + parseInt(evt.target.value),
+                    all: (parseInt(this.state.initialTime.minutes) * 60) + obj.value,
                     minutes: this.state.initialTime.minutes,
-                    seconds: evt.target.value
+                    seconds: obj.text
                 }
             })
         }
     }
     render(){
         return (
-            <div>
+            <div className="add-interval card">
                 <div className="time">
                     <div>
-                        <input id="minutes" type="number" value={this.state.initialTime.minutes} min={0} max={59} onChange={this.handleInputChange}/>
+                        <InputTime id="minutes" value={this.state.initialTime.minutes} onChange={this.handleInputChange}/>
                     </div>
                     <div>
                         <span>:</span>
                     </div>
                     <div>
-                        <input id="seconds" type="number" value={this.state.initialTime.seconds} min={0} max={59} onChange={this.handleInputChange}/>
+                        <InputTime id="seconds" value={this.state.initialTime.seconds} onChange={this.handleInputChange}/>
                     </div>
                 </div>
-                <button onClick={this.handleSendInterval}>add</button>
+                <button className="button" onClick={this.handleSendInterval}><i className="material-icons">add</i></button>
             </div>
         )
     }
