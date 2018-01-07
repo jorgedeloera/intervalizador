@@ -24,7 +24,11 @@ class App extends Component {
     handleTime(){
         if(this.state.timerPaused){
             let intervalTimerFunction = ()=> {
-                if(this.state.initialTime.all > 0){
+                if(this.state.initialTime.all > 1){
+                    let interval = this.state.intervals.find(el => (el.all + 1) == this.state.initialTime.all)
+                    if(interval != undefined){
+                        window.navigator.vibrate(200)
+                    }
                     if(parseInt(this.state.initialTime.seconds) > 0){
                         let seconds = parseInt(this.state.initialTime.seconds) - 1
                         this.setState({
@@ -47,11 +51,16 @@ class App extends Component {
                     }
                 }
                 else{
+                    window.navigator.vibrate([200, 200])
                     clearInterval(this.state.intervalTimer)
                     this.setState({
-                        timerPaused: !this.state.timerPaused
+                        timerPaused: !this.state.timerPaused,
+                        initialTime: {
+                            all: 0,
+                            minutes: '00',
+                            seconds: '00'
+                        }
                     })
-                    window.navigator.vibrate([200, 200])
                 }
             }
             let intervalTimer = setInterval(intervalTimerFunction, 1000)
@@ -113,10 +122,10 @@ class App extends Component {
                             <div className="title">
                                 <span>Intervalos</span>
                             </div>
-                            <AddInterval onAddInterval={this.onAddInterval}/>
+                            <AddInterval initialTime={this.state.initialTime} onAddInterval={this.onAddInterval}/>
                             <ul className="intervals">
                                 { this.state.intervals.map((item, index) => (
-                                    <li key={index} className="card">
+                                    <li key={index} className="card interval">
                                         <div className="text">
                                             <span>{item.minutes}:{item.seconds}</span>
                                         </div>

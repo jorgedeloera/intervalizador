@@ -5,17 +5,20 @@ class AddInterval extends Component {
     constructor(props){
         super(props)
         this.state = {
-            initialTime: {
-                all: 0,
-                minutes: '00',
-                seconds: '00'
-            }
+            initialTime: this.props.initialTime
         }
         this.handleInputChange = this.handleInputChange.bind(this)
         this.handleSendInterval = this.handleSendInterval.bind(this)
     }
+    componentWillReceiveProps(props){
+        this.setState({
+            initialTime: props.initialTime
+        })
+    }
     handleSendInterval(){
-        this.props.onAddInterval(this.state.initialTime)
+        if(this.state.initialTime.all > 0){
+            this.props.onAddInterval(this.state.initialTime)
+        }
     }
     handleInputChange(evt, obj){
         if(obj.type == 'minutes'){
