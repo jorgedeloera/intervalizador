@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import AddInterval from './AddInterval'
 import PrincipalClock from './PrincipalClock'
+import AddInterval from './AddInterval'
 
 class App extends Component {
     constructor(props){
@@ -10,8 +10,8 @@ class App extends Component {
             timerPaused: true,
             intervalTimer: undefined,
             initialTime: {
-                all: 0,
-                minutes: '00',
+                all: 480,
+                minutes: '08',
                 seconds: '00'
             },
             intervals: [
@@ -19,6 +19,7 @@ class App extends Component {
         }
         this.handleInputChange = this.handleInputChange.bind(this)
         this.onAddInterval = this.onAddInterval.bind(this)
+        this.onDeleteInterval = this.onDeleteInterval.bind(this)
         this.handleTime = this.handleTime.bind(this)
     }
     handleTime(){
@@ -76,9 +77,17 @@ class App extends Component {
         })
         window.navigator.vibrate(200)
     }
-    onAddInterval(newInterval){
+    onAddInterval(interval){
         this.setState({
-            intervals: [...this.state.intervals, newInterval]
+            intervals: [...this.state.intervals, interval]
+        })
+    }
+    onDeleteInterval(evt){
+        let newIntervals = this.state.intervals
+        let element = newIntervals.findIndex( el => el.all == evt.target.id)
+        newIntervals.splice(element, 1)
+        this.setState({
+            intervals: newIntervals
         })
     }
     handleInputChange(evt, obj){
@@ -107,39 +116,35 @@ class App extends Component {
                 <PrincipalClock totalTime={this.state.totalPossibletime} initialTime={this.state.initialTime} handleInputChange={this.handleInputChange}/>
                 {
                     (this.state.initialTime.all > 0) ?
-                    <div>
-                        <div className="action-box">
-                            <button className="button primary" onClick={this.handleTime}>
+                    <div className="action-box">
+                        <button className="button primary" onClick={this.handleTime}>
                                 {
-                                    this.state.timerPaused ?
-                                    <i className="material-icons">play_arrow</i>
-                                    :
-                                    <i className="material-icons">pause</i>
-                                }                               
-                            </button>
-                        </div>
-                        <div className="intervals-box">
-                            <div className="title">
-                                <span>Intervalos</span>
-                            </div>
-                            <AddInterval initialTime={this.state.initialTime} onAddInterval={this.onAddInterval}/>
-                            <ul className="intervals">
-                                { this.state.intervals.map((item, index) => (
-                                    <li key={index} className="card interval">
-                                        <div className="text">
-                                            <span>{item.minutes}:{item.seconds}</span>
-                                        </div>
-                                        <button className="button secondary"><i className="material-icons">delete</i></button>
-                                    </li>
-                                )) }
-                            </ul>
-                        </div>
+                                this.state.timerPaused ?
+                                <i className="material-icons">play_arrow</i>
+                                :
+                                <i className="material-icons">pause</i>
+                            }                               
+                        </button>
                     </div>
                     :
-                    <div className="issue">
-                        <span>Selecciona tiempo inicial</span>
-                    </div>
+                    null
                 }
+                <div className="intervals-box">
+                    <div className="title">
+                        <span>Intervalos</span>
+                        <AddInterval onAddInterval={this.onAddInterval} initialTime={this.state.initialTime}/>
+                    </div>
+                    <ul className="intervals">
+                        { this.state.intervals.map((item, index) => (
+                            <li key={index} className="card interval">
+                                <div className="text">
+                                    <span>{item.minutes}:{item.seconds}</span>
+                                </div>
+                                <button id={item.all} className="button secondary" onClick={this.onDeleteInterval}><i className="material-icons">delete</i></button>
+                            </li>
+                        )) }
+                    </ul>
+                </div>
             </div>
         )
     }

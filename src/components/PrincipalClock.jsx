@@ -5,10 +5,10 @@ import InputTime from './InputTime'
 const circleDefinition = {
     size: { width: '100%', height: '100%' },
     options: {
-        strokeWidth: 7,
+        strokeWidth: 2,
         color: '#5DD470',
         trailColor: '#fff',
-        trailWidth: 3,
+        trailWidth: 2,
         duration: 150
     }
 }

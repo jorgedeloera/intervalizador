@@ -14,7 +14,7 @@ const InputTime = function(props){
             return props.onChange(evt, obj)
         }
     }
-    return <input id={props.id} type="number" value={props.value} min={min} max={max} onChange={onChange}/>
+    return <span id={props.id}>{props.value}</span>
 }
 
 export default InputTime
