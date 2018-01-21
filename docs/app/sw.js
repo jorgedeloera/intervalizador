@@ -1,7 +1,7 @@
 var __wpo = {
   "assets": {
     "main": [
-      "./bundle.3db1be9b3a9c2c232bcb.js",
+      "./bundle.3069602ed5b6935cdf2f.js",
       "./icon192x192.png",
       "./",
       "./../",
@@ -12,15 +12,15 @@ var __wpo = {
   },
   "externals": [],
   "hashesMap": {
-    "0f91a92b607b7543d7f27f20f4ea68f847611c06": "./bundle.3db1be9b3a9c2c232bcb.js",
+    "710389e34e180b28d046ad7d6fd4fc3d20d1ef8d": "./bundle.3069602ed5b6935cdf2f.js",
     "caf5f26c863d02571fc95b03ad4c37e5a8073760": "./icon192x192.png",
-    "136f6aefb10748d27fce5ad98894e56f5e74fd91": "./",
+    "2d383a9f25298f7c0fc5be91c89302855fa0defb": "./",
     "17ccfc484ebc0b94c66ba4d6e59d1f2067f86e6d": "./../",
     "d54283c38d817dcc37bfa82497022d0d21912e01": "./manifest.json"
   },
   "strategy": "changed",
   "responseStrategy": "cache-first",
-  "version": "2018-1-6 20:44:28",
+  "version": "2018-1-21 17:19:16",
   "name": "webpack-offline",
   "pluginVersion": "4.9.0",
   "relativePaths": true
